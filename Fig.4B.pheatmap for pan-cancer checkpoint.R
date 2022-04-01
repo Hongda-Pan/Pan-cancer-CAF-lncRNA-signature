@@ -1,0 +1,19 @@
+library(pheatmap)
+setwd("D:\\BaiduNetdiskWorkspace\\05CAF\\16pan-cancer.checkpoint\\04plot")
+test=read.table("heatmap.pan-cancer.correlation.checkpoint.txt", header=T, sep="\t", check.names=F, row.names=1)
+data=as.matrix(test)
+pdf("heatmap_checkpoint.pdf", width=5.5, height=8)
+pheatmap(test,cluster_cols = F,cluster_rows = F,
+         color = colorRampPalette(c(rep("#3c5488",2), "white", rep("#e64b35",2)))(100),
+         border_color = "black",
+         treeheight_row = 10, treeheight_col = 50,
+         #display_numbers = TRUE,number_color = "blue",
+         #display_numbers = matrix(ifelse(test > 0.5, "*", ""), nrow(test)),
+         #cellwidth = 12, cellheight = 12,
+         main = "Pan-cancer correlation between CAFDL signature and immune checkpoints",
+         #gaps_row = c(11, 21, 32),
+         )
+dev.off()
+
+
+#½Ì³Ì£ºhttps://www.jianshu.com/p/1c55ea64ff3f
